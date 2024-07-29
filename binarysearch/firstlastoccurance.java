@@ -1,24 +1,49 @@
 package binarysearch;
 
-public class firstoccurance {
-    public static int FirstOccurance(int arr[],int target){
-        for(int i=0;i< arr.length;i++){
-            if(arr[i]==target){
-                return arr[i];
+public class firstlastoccurance{
+
+    public static int FindFirstOccurrence(int[] arr, int target) {
+        int left = 0, right = arr.length - 1;
+        int result = -1;
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (arr[mid] == target) {
+                result = mid;
+                right = mid - 1; // Move left to find the first occurrence
+            } else if (arr[mid] < target) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
             }
         }
-        return -1;
+        return result;
+    }
+    public static int FindLastOccurance(int arr[],int target){
+        int left=0;int right=arr.length-1;
+        int result=-1;
+        while(left<=right){
+            int mid=left+(right-left)/2;
+            if(arr[mid]==target){
+                result=mid;
+                left=mid+1;
+
+            }
+            else if(arr[mid]<target){
+                left=mid+1;
+            }
+            else{
+                right=mid-1;
+            }
+        }
+        return result;
+
     }
 
     public static void main(String[] args) {
-        int sortedArray[]={1,2,2,3,4,5,7};
-        int targetElement=2;
-        int result=FirstOccurance(sortedArray,targetElement);
-        if(result!=1){
-            System.out.println("First Occurance of element found at " +result);
-        }
-        else{
-            System.out.println("Element not Found in the array list");
-        }
+        int[] arr = {1, 2, 2, 2, 2, 4, 5};
+        int target = 5;
+        System.out.println("First occurrence of " + target + " is at index: " + FindFirstOccurrence(arr, target));
+        System.out.println("Last occurrence of " + target + " is at index: " + FindLastOccurance(arr, target));
+
     }
 }
