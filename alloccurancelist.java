@@ -17,7 +17,7 @@ public class alloccurancelist {
 
     public static void main(String[] args) {
         int arr[]={1,2,2,3,5,6,5,6,7,3,5};
-        int target=7;
+        int target=2;
         List<Integer> result=AllOccuranceList(arr,target);
         System.out.println("The indices where "+target+ " appears in the array are "+result );
     }
